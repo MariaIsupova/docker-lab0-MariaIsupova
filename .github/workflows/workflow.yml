@@ -43,5 +43,5 @@ jobs:
               
         - name: Uploading to docker hub
           run: | 
-               docker login --username=${{secrets.DOCKER_LOGIN}} --password=${{secrets.DOCKER_PASSOWORD}}
+               docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSOWORD }}
                docker push $PROJECT_NAME:v$GITHUB_RUN_NUMBER
