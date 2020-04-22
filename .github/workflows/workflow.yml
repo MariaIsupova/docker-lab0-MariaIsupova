@@ -28,7 +28,7 @@ jobs:
  
   CI:
       runs-on: ubuntu-latest
-      #needs: Code_style
+      needs: Code_style
       
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
