@@ -16,7 +16,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:     
-  code_style:
+  Code_style:
       runs-on: ubuntu-latest
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -26,7 +26,7 @@ jobs:
           uses: andymckay/pycodestyle-action@0.1.3
   CI:
       runs-on: ubuntu-latest
-      needs: code_style
+      needs: Code_style
       
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
