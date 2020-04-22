@@ -42,6 +42,8 @@ jobs:
               docker images
               
         - name: Uploading to docker hub
+          
           run: | 
-               winpty docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSOWORD }}
+               echo ${{ secrets.DOCKER_LOGIN }}
+               docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSOWORD }}
                docker push $PROJECT_NAME:v$GITHUB_RUN_NUMBER
