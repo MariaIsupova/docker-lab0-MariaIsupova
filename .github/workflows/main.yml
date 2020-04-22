@@ -51,5 +51,5 @@ jobs:
         #  run: docker -v 
         - name: Docker build
           run: |
-              docker build -t $PROJECT_NAME:v$GITHUB_RUN_NUMBER
+              docker build -t $PROJECT_NAME
               docker images
