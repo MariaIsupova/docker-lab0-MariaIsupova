@@ -15,10 +15,17 @@ on:
  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:      
+jobs:     
+  Code style:
+      runs-on: ubuntu-latest
+      steps:
+        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+        - uses: actions/checkout@v2
+          
+        - name: Сhecking the code style
+          uses: andymckay/pycodestyle-action@0.1.3
   CI:
       runs-on: ubuntu-latest
-      #needs: print_info
       
       steps:
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -30,3 +37,8 @@ jobs:
           run: |
               docker build -t $PROJECT_NAME:v$GITHUB_RUN_NUMBER .
               docker images
+              
+        #- name: Uploading to docker hub
+         # run: | 
+              # docker login --username=${{secrets.}} --password=${{secrets.}}
+              # docker push $PROJECT_NAME:v$GITHUB_RUN_NUMBER
