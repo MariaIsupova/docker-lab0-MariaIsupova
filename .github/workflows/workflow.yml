@@ -45,8 +45,3 @@ jobs:
           run: |
                docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSWORD }}
                docker push $PROJECT_NAME:v$GITHUB_RUN_NUMBER
-          #run: |
-               #echo ${{ secrets.DOCKER_LOGIN }}
-               #echo ${{ secrets.DOCKER_PASSWORD }}
-               # docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSOWORD }}
-               # docker push $PROJECT_NAME:v$GITHUB_RUN_NUMBER
