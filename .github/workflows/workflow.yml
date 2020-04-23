@@ -38,10 +38,10 @@ jobs:
         #  run: docker -v 
         - name: Docker build
           run: |
-              docker build -t $PROJECT_NAME:v$GITHUB_RUN_NUMBER .
+              docker build -t MariaIsupova/$PROJECT_NAME:v$GITHUB_RUN_NUMBER .
               docker images
               
         - name: Uploading to docker hub
           run: |
                docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSWORD }}
-               docker push mariaisupova/calculator:$GITHUB_RUN_NUMBER
+               docker push mariaisupova/$PROJECT_NAME:$GITHUB_RUN_NUMBER
