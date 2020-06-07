@@ -17,6 +17,9 @@ jobs:
           
       - name: Сhecking the code style
         uses: andymckay/pycodestyle-action@0.1.3 
+        with:
+          args: --ignore E402
+#         continue-on-error: true
   
   Test:
     runs-on: ubuntu-latest    
