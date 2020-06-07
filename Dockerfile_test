@@ -7,7 +7,7 @@ COPY ./js_example /web/js_example/
 WORKDIR /web
 RUN python3 -m venv venv
 RUN . venv/bin/activate
-RUN pip install -e
+RUN pip install -e .
 RUN pip install '.[test]' 
 RUN coverage run -m pytest
 ENTRYPOINT coverage html
