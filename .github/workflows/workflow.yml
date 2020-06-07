@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build test
-        run: sudo docker build -t $PROJECT_NAME:tests 
+        run: sudo docker build -t $PROJECT_NAME:tests -f Dockerfile_test
       - name: Run testing
         run: |
           mkdir artifacts
