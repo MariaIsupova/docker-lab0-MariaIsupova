@@ -57,25 +57,12 @@ jobs:
      - uses: actions/checkout@v2
      - name: ps
        run: docker ps
-     - name: img
+     - name: docker images
        run: docker images
      - name: kill existing
-       run: docker kill project
+       run: docker kill $PROJECT_NAME:latest
        continue-on-error: true
-     - name: rm container
-       run: docker image rm --force ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:latest
-       continue-on-error: true
-     - name: rmi container
-       run: docker rm project
-       continue-on-error: true  
      - name: run
-       run: docker run -d -p 5000:5000 -e FLASK_APP="js_example" --name project ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:latest
-#      - name: kill existing
-#        run: docker kill $PROJECT_NAME:latest
-#        continue-on-error: true
-#      - name: docker images
-#        run: docker images
-#      - name: run
-#        run: docker run -d --name $PROJECT_NAME:latest -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBE
-# #      - name: test delivery
-# #        run: curl -IS http://localhost:5000 
+       run: docker run -d --name $PROJECT_NAME:latest -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBE
+#      - name: test delivery
+#        run: curl -IS http://localhost:5000 
