@@ -23,7 +23,7 @@ jobs:
   
   Test:
     runs-on: ubuntu-latest 
-#     needs: Code_style   
+    needs: Code_style   
     steps:
       - uses: actions/checkout@v2
       - name: Build test
@@ -33,7 +33,7 @@ jobs:
   
   CI:
     runs-on: ubuntu-latest
-#     needs: [Code_style, Test]
+    needs: [Code_style, Test]
       
     steps:
       - uses: actions/checkout@v2
@@ -52,7 +52,7 @@ jobs:
              
   CD:
     runs-on: ubuntu-latest
-#     needs: CI
+    needs: CI
     steps:
      - uses: actions/checkout@v2
      - name: kill existing
