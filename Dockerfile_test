@@ -2,8 +2,7 @@ FROM python:3
 EXPOSE 5000
 ARG /web
 
-COPY . /web/docker-lab0-MariaIsupova-master
-WORKDIR /web/docker-lab0-MariaIsupova-master
+COPY ./js_example /web/js_example/
 RUN python3 -m venv venv
 RUN . venv/bin/activate
 RUN pip install -e .
