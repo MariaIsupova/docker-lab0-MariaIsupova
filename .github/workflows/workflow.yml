@@ -22,33 +22,14 @@ jobs:
         continue-on-error: true
   
   Test:
-#     runs-on: ubuntu-latest 
-#     needs: Code_style   
-#     steps:
-#       - uses: actions/checkout@v2
-#       - name: Build test
-#         run: sudo docker build -t $PROJECT_NAME:tests -f Dockerfile_test . --build-arg .
-        
-#       - name: Run testing
-#         run: |
-#           mkdir artifacts
-#           docker run -v `pwd`/artifacts:/tmp $PROJECT_NAME:tests
-#           zip -r artifacts.zip artifacts
-#           ls
-#       - uses: actions/upload-artifact@v2
-#         with:
-#           name: artifacts
-#           path: artifacts.zip
- 
     runs-on: ubuntu-latest 
     needs: Code_style   
     steps:
       - uses: actions/checkout@v2
       - name: Build test
-        run: docker build -t ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:test_ver$GITHUB_RUN_NUMBER -f Dockerfile_test . --build-arg .
+        run: docker build -t ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:test_ver$GITHUB_RUN_NUMBER -f Dockerfile_test .
       - name: Run test
         run: docker run ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:test_ver$GITHUB_RUN_NUMBER
-        
   
   CI:
     runs-on: ubuntu-latest
