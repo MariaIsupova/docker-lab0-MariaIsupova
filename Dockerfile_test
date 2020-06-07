@@ -4,6 +4,7 @@ ARG /web
 
 COPY setup.py /web/
 COPY ./js_example /web/js_example/
+WORKDIR /web
 RUN python3 -m venv venv
 RUN . venv/bin/activate
 RUN pip install -e .
