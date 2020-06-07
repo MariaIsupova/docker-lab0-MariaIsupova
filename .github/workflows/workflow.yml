@@ -18,15 +18,27 @@ jobs:
       - name: Сhecking the code style
         uses: andymckay/pycodestyle-action@0.1.3 
   
-#   Test:
-#     runs-on: [ubuntu-latest]    
-#     steps:
-#       - uses: actions/checkout@v2
+  Test:
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build test
+        run: sudo docker build -t $PROJECT_NAME:tests 
+      - name: Run testing
+        run: |
+          mkdir artifacts
+          docker run -v `pwd`/artifacts:/tmp $PROJECT_NAME:tests
+          zip -r artifacts.zip artifacts
+          ls
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: artifacts.zip
         
   
   CI:
     runs-on: ubuntu-latest
-    needs: Code_style
+    needs: [Code_style, Test]
       
     steps:
       - uses: actions/checkout@v2
@@ -42,5 +54,3 @@ jobs:
         run: |
              docker login --username=${{ secrets.DOCKER_LOGIN }} --password=${{ secrets.DOCKER_PASSWORD }} 
              docker push ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER
-               
-               
