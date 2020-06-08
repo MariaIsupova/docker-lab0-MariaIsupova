@@ -59,6 +59,12 @@ jobs:
        continue-on-error: true
      - name: run
        run:   
-         docker run -d --rm --name $PROJECT_NAME -p 8000:5500 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER 
+         docker run -d --rm --name $PROJECT_NAME -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER 
+ 
+  End-to-end:
+    runs-on: calculator_env
+    needs: [ CD ]
+    steps:
+     - uses: actions/checkout@v2
      - name: check
-       run: curl -IS http://localhost:5500
+       run: curl -I http://localhost:5000
