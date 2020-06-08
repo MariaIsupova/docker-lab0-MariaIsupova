@@ -63,7 +63,7 @@ jobs:
        run: docker kill $PROJECT_NAME
        continue-on-error: true
      - name: run
-       run: docker run -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBE
+       run: docker run -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER
       
 #       run: docker run -d --rm --name $PROJECT_NAME -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBE
      - name: test delivery
