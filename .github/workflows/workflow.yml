@@ -71,4 +71,4 @@ jobs:
     steps:
      - uses: actions/checkout@v2
      - name: check
-       run: curl -I  http://localhost:5000
+       run: curl -IS http://localhost:5000
