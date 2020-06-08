@@ -63,7 +63,6 @@ jobs:
        continue-on-error: true
        
      - name: run
-       run: docker run -d --rm --name $PROJECT_NAME -p 2000:2000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER 
-       
+       run: docker run -d --rm --name $PROJECT_NAME -p 2000:2000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER  
      - name: check
        run: curl -IS  http://localhost:2000
