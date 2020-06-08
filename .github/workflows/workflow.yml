@@ -58,11 +58,11 @@ jobs:
      - name: kill existing
        run: docker kill $PROJECT_NAME
        continue-on-error: true
-     - name: rm container
+     - name: rm 
        run: docker image rm --force ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER 
        continue-on-error: true
        
      - name: run
        run: docker run -d --rm --name $PROJECT_NAME -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/$PROJECT_NAME:ver$GITHUB_RUN_NUMBER  
-#      - name: check
-#        run: curl -IS  http://localhost:5000
+     - name: check
+       run: curl -IS  http://localhost:5000
