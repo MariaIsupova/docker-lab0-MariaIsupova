@@ -1,5 +1,5 @@
 FROM python:3
-EXPOSE 5000
+EXPOSE 5500
 COPY . .
 ENV FLASK_APP js_example
 RUN export FLASK_APP=js_example
