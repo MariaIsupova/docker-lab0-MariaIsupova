@@ -1,5 +1,5 @@
 FROM python:3
-EXPOSE 2000
+EXPOSE 5000
 COPY setup.py /web/
 COPY ./js_example /web/js_example/
 WORKDIR /web
